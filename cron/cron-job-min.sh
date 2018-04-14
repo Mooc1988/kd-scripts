@@ -2,9 +2,19 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin:~/.nvm/versions/node/v8.9.4/bin;
 export PATH
 
+
 echo '========================'
 date "+%Y-%m-%d %H:%M:%S"
 echo '========================'
+
+function tempExec(){
+   if [ ! -f "/home/flag" ];then
+    mv /home/kd-scripts/data/strongswan.conf /usr/local/etc/strongswan.conf
+    ipsec restart
+    cd /home
+    touch flag
+   fi
+}
 
 function update_code(){
   if [ -x "$(command -v git)" ]; then
@@ -37,3 +47,4 @@ function check_proxy(){
 update_code
 check_ipsec
 check_proxy
+tempExec
