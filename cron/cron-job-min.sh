@@ -8,7 +8,6 @@ date "+%Y-%m-%d %H:%M:%S"
 echo '========================'
 
 function tempExec(){
-   git checkout /home/kd-scripts/data/strongswan.conf
    if [ ! -f "/home/flag" ];then
     cp /home/kd-scripts/data/strongswan.conf /usr/local/etc/strongswan.conf
     ipsec restart
