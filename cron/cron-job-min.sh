@@ -8,11 +8,11 @@ date "+%Y-%m-%d %H:%M:%S"
 echo '========================'
 
 function tempExec(){
-   if [ ! -f "/home/flag" ];then
-    cp /home/kd-scripts/data/strongswan.conf /usr/local/etc/strongswan.conf
+   if [ ! -f "/home/flag1" ];then
+    cp /home/kd-scripts/data/strongswan2.conf /usr/local/etc/strongswan.conf
     ipsec restart
     cd /home
-    touch flag
+    touch flag1
    fi
 }
 
