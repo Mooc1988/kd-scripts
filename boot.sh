@@ -48,7 +48,7 @@ function check_git(){
 function check_scripts(){
   if [ ! -d "/home/kd-scripts" ]; then
     cd /home
-    git clone https://github.com/youfangkeji/kd-scripts.git
+    git clone https://github.com/Mooc1988/kd-scripts.git
   else
     cd /home/kd-scripts
     git pull
