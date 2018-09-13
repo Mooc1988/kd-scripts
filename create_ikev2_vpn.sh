@@ -7,7 +7,7 @@ fi
 cd /home/vpn
 clear
 VER=1.2.0
-strongswan_version='strongswan-5.6.0'
+strongswan_version='strongswan-5.6.3'
 
 echo "#############################################################"
 echo "# Install IKEV2 VPN for CentOS6.x/7 (32bit/64bit) or Ubuntu or Debian7/8.*"
@@ -297,7 +297,7 @@ function create_cert(){
 
 # configure the ipsec.conf
 function configure_ipsec(){
- cat > /usr/local/etc/ipsec.conf<<-EOF
+ cat > /usr/local/etc/ipsec.conf << EOF
 config setup
     uniqueids=never 
 
@@ -328,6 +328,7 @@ conn android_xauth_psk
 
 conn networkmanager-strongswan
     keyexchange=ikev2
+    ike=aes256-aes128-3des-sha1-modp1024,3des-sha1-prfsha1-modp1024,aes256-sha256-modp2048,3des-sha1-modp2048,aes256-sha1-modp2048,3des-sha1-modp1024!
     left=%defaultroute
     leftauth=pubkey
     leftsubnet=0.0.0.0/0
@@ -340,7 +341,7 @@ conn networkmanager-strongswan
 
 conn ios_ikev2
     keyexchange=ikev2
-    ike=aes256-sha256-modp2048,3des-sha1-modp2048,aes256-sha1-modp2048!
+    ike=aes256-aes128-3des-sha1-modp1024,3des-sha1-prfsha1-modp1024,aes256-sha256-modp2048,3des-sha1-modp2048,aes256-sha1-modp2048,3des-sha1-modp1024!
     esp=aes256-sha256,3des-sha1,aes256-sha1!
     rekey=no
     left=%defaultroute
